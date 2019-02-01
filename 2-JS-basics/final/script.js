@@ -546,6 +546,33 @@ Remember: BMI = mass / height^2 = mass / (height * height). (mass in kg and heig
 
 GOOD LUCK 😀
 */
+
+
+let john = {
+    fullName: 'John Smith',
+    mass: 165,
+    height: 70,
+    bmi: function() {
+        return this.mass / (this.height * this.height);
+    }
+}
+
+let mark = {
+    fullName: 'Mark Smyth',
+    mass: 146,
+    height: 80,
+    bmi: function() {
+        return this.mass / (this.height * this.height);
+    }
+}
+
+let isJohnFatter = john.bmi() > mark.bmi();
+
+console.log('does john have a higher BMI? ' + isJohnFatter);
+
+
+
+
 /*
 var john = {
     fullName: 'John Smith',
