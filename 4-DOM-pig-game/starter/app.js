@@ -26,14 +26,20 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
 		roundScore += dice;
 		document.getElementById('current-' + activePlayer).innerHTML = roundScore;
 	}
-
 });
+
+document.querySelector('.btn-hold').addEventListener('click', function() {
+	scores[activePlayer] += roundScore;
+	document.getElementById('score-' + activePlayer).innerHTML = scores[activePlayer];
+	roundScore = 0;
+	document.getElementById('current-' + activePlayer).innerHTML = roundScore;
+	nextPlayer();
+})
 
 
 document.querySelector('.btn-new').addEventListener('click', function() {
 	init();
 });
-
 
 
 function init() {
