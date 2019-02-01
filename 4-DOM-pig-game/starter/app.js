@@ -9,21 +9,28 @@ GAME RULES:
 
 */
 
-init();
 
 let scores, roundScore, activePlayer, dice;
 
-scores = [0, 0];
-roundScore = 0;
-activePlayer = 0;
+// when rolling the die
+document.querySelector('.btn-roll').addEventListener('click', function() {
+	document.querySelector('.dice').style.visibility = 'visible';
+	dice = Math.floor(Math.random() * 6) + 1;
+	document.querySelector('.dice').src = 'dice-' + dice + '.png';
 
-dice = Math.floor(Math.random() * 6) + 1;
-console.log(dice);
+});
 
 
 document.querySelector('.btn-new').addEventListener('click', function() {
-	alert('you clicked!');
+	init();
 });
+
+document.querySelector('.btn-roll').addEventListener('click', function() {
+	
+	dice = Math.floor(Math.random() * 6) + 1;
+
+});
+
 
 
 
@@ -32,6 +39,10 @@ function init() {
 	document.getElementById('score-1').innerHTML = 0;
 	document.getElementById('current-0').innerHTML = 0;
 	document.getElementById('current-1').innerHTML = 0;
+	document.querySelector('.dice').style.visibility = 'hidden';
+	scores = [0, 0];
+	roundScore = 0;
+	activePlayer = 0;
 }
 
 
