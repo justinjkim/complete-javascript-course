@@ -18,19 +18,21 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
 	dice = Math.floor(Math.random() * 6) + 1;
 	document.querySelector('.dice').src = 'dice-' + dice + '.png';
 
+	if (dice === 1) {
+		alert('oops! you rolled a 1!');
+		roundScore = 0;
+		nextPlayer();
+	} else {
+		roundScore += dice;
+		document.getElementById('current-' + activePlayer).innerHTML = roundScore;
+	}
+
 });
 
 
 document.querySelector('.btn-new').addEventListener('click', function() {
 	init();
 });
-
-document.querySelector('.btn-roll').addEventListener('click', function() {
-	
-	dice = Math.floor(Math.random() * 6) + 1;
-
-});
-
 
 
 
