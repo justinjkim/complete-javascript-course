@@ -12,6 +12,8 @@ GAME RULES:
 
 let scores, roundScore, activePlayer, dice;
 
+init();
+
 // when rolling the die
 document.querySelector('.btn-roll').addEventListener('click', function() {
 	document.querySelector('.dice').style.visibility = 'visible';
@@ -21,6 +23,7 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
 	if (dice === 1) {
 		alert('oops! you rolled a 1!');
 		roundScore = 0;
+		document.getElementById('current-' + activePlayer).innerHTML = roundScore;
 		nextPlayer();
 	} else {
 		roundScore += dice;
@@ -33,7 +36,17 @@ document.querySelector('.btn-hold').addEventListener('click', function() {
 	document.getElementById('score-' + activePlayer).innerHTML = scores[activePlayer];
 	roundScore = 0;
 	document.getElementById('current-' + activePlayer).innerHTML = roundScore;
+
+	if (scores[activePlayer] >= 10) {
+		document.getElementById('name-' + activePlayer).innerHTML = 'Winner!!';
+		document.querySelector('.player-' + activePlayer + '-panel').classList.add('winner');
+		document.querySelector('.player-' + activePlayer + '-panel').classList.remove('active');
+		document.getElementById('name-' + activePlayer).classList.add('winner');
+		document.querySelector('.dice').style.display = 'none';
+		
+	} else {
 	nextPlayer();
+	}
 })
 
 
@@ -51,6 +64,20 @@ function init() {
 	scores = [0, 0];
 	roundScore = 0;
 	activePlayer = 0;
+}
+
+function nextPlayer() {
+	if (activePlayer === 0) {
+		activePlayer = 1;
+	} else {
+		activePlayer = 0;
+	}
+
+	roundScore = 0;
+
+	document.querySelector('.player-0-panel').classList.toggle('active');
+	document.querySelector('.player-1-panel').classList.toggle('active');
+
 }
 
 
